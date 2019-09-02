@@ -1,3 +1,3 @@
-# Web-App-Development
+# Web-App-Development Week 1
 
-Branches will be created each week github is needed for homework.
+The homework for the first week.
