@@ -33,6 +33,9 @@ app.get('/about', function(req, res) {
 		pageTestScript: '/public/qa/tests-about.js'
 	});
 });
+app.get('/courses', function(req, res) {
+	res.render('courses');
+});
 app.get('/contact', function(req, res) {
 	res.render('contact');
 });
