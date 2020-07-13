@@ -56,7 +56,7 @@ app.get('/about', function(req, res) {
 	});
 });
 app.get('/courses', function(req, res) {
-	res.render('courses');
+	res.render('courses', { courseInfo: courseInfo });
 });
 app.get('/process', function(req, res) {
 	res.render('process');
