@@ -1,6 +1,7 @@
 <h2 align="center">Course List</h2>
 <div align="center">
 	<table border="1">
+	{{#each courseInfo}}
 		<tr>
 			<th>Code</th>
 			<th>Name</th>
@@ -9,25 +10,12 @@
 			<th>Instructor</th>
 		</tr>
 		<tr>
-			<td>{{course1.code}}</td>
-			<td>{{course1.name}}</td>
-			<td>{{course1.description}}</td>
-			<td>{{course1.credits}}</td>
-			<td>{{course1.instructor}}</td>
+			<td>{{courseInfo.code}}</td>
+			<td>{{courseInfo.name}}</td>
+			<td>{{courseInfo.description}}</td>
+			<td>{{courseInfo.credits}}</td>
+			<td>{{courseInfo.instructor}}</td>
 		</tr>
-		<tr>
-			<td>{{course2.code}}</td>
-			<td>{{course2.name}}</td>
-			<td>{{course2.description}}</td>
-			<td>{{course2.credits}}</td>
-			<td>{{course2.instructor}}</td>
-		</tr>
-		<tr>
-			<td>{{course3.code}}</td>
-			<td>{{course3.name}}</td>
-			<td>{{course3.description}}</td>
-			<td>{{course3.credits}}</td>
-			<td>{{course3.instructor}}</td>
-		</tr>
+	{{/each}}
 	</table>
 </div>
