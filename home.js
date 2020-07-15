@@ -18,9 +18,9 @@ app.use(require('body-parser')());
 app.post('/process', function(req, res){
 	console.log('CSRF token (from hidden form field): ' + req.body._csrf);
 	console.log('Form (from querystring): ' + req.query.form);
-	console.log('Name token (from hidden form field): ' + req.body._csrf);
-	console.log('Email (from visible form field): ' + req.body.name);
-	console.log('Comment (from visible form field): ' + req.body.email);
+	console.log('Name token (from hidden form field): ' + req.body.name);
+	console.log('Email (from visible form field): ' + req.body.email);
+	console.log('Comment (from visible form field): ' + req.body.comment);
 	res.redirect(303, '/thank-you')
 });
 
@@ -47,7 +47,7 @@ var courseInfo = [
 		"instructor": "Jeffrey Seaman"
 	}
 ];
-	app.get('/', function(req, res) {
+app.get('/', function(req, res) {
 	res.render('home');
 });
 app.get('/about', function(req, res) {
@@ -58,11 +58,11 @@ app.get('/about', function(req, res) {
 app.get('/courses', function(req, res) {
 	res.render('courses', { courseInfo: courseInfo });
 });
-app.get('/process', function(req, res) {
-	res.render('process');
-});
 app.get('/contact', function(req, res) {
-	res.render('contact', { csrf: 'CSRF token goes here' });
+	res.render('contact', { csrf: 'CSRF random value' });
+});
+app.get('/thank-you', function(req, res) {
+	res.render('thank-you');
 });
 app.get('/games', function(req, res) {
 	res.render('games', {
