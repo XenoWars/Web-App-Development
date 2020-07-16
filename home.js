@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express();
 var favorite = require('./modules/favorite.js');
+var favorite = require('./credentials.js');
 var handlebars = require('express3-handlebars').create({ defaultLayout: 'main' });
-
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -15,7 +15,17 @@ app.use(function(req, res, next) {
 if( app.thing == null ) console.log( 'bleat!' );
 
 app.use(require('body-parser')());
+app.use(require('cookie-parser')(credentials.cookieSecret));
+app.use(require('express-session')());
+app.use(function(req, res, next) {
+	res.locals.name = req.session.name;
+	next();
+});
 app.post('/process', function(req, res){
+	var name = req.body.name ;
+	if (name) {
+		req.session.name = name;
+	};
 	console.log('CSRF token (from hidden form field): ' + req.body._csrf);
 	console.log('Form (from querystring): ' + req.query.form);
 	console.log('Name token (from hidden form field): ' + req.body.name);
@@ -49,6 +59,8 @@ var courseInfo = [
 ];
 app.get('/', function(req, res) {
 	res.render('home');
+	res.cookie('xenoblade');
+	var xenoblade = req.cookies.xenoblade;
 });
 app.get('/about', function(req, res) {
 	res.render('about', {
